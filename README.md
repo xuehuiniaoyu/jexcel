@@ -58,7 +58,8 @@ List<User> userList = new Excel2JavaBean().setPage(1).setCursor(0).setCount(30).
 ## Java -> Excel
 
 ```
-JavaBean2Excel j2e = new JavaBean2Excel("job", "name" , "age", "sex").setCursor(3);
+JavaBean2Excel j2e = new JavaBean2Excel();
+//JavaBean2Excel j2e = new JavaBean2Excel("job", "name" , "age", "sex").setCursor(3);
 User user = new User();
 user.setName("333");
 user.setAge(29);
