@@ -7,19 +7,15 @@ Jexcel is a Java library that can be used to the Java object content written to 
 ## Gradle
 
 ```
-1.Add it in your root build.gradle at the end of repositories （/build.gradle）:
 
 allprojects {
 	repositories {
-		...
 		maven { url 'https://jitpack.io' }
 	}
 }
 
-2.Add the dependency（添加依赖到app下的build.gradle）
 
 dependencies {
-	...
 	implementation 'com.github.xuehuiniaoyu:jexcel:v1.2'
 }
 
