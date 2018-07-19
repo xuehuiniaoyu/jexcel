@@ -1,0 +1,14 @@
+group 'org.xhny'
+version '1.0'
+
+apply plugin: 'java'
+
+repositories {
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+}
+
+dependencies {
+    compile 'org.apache.poi:poi-ooxml:3.17'
+    compile 'org.apache.poi:poi:3.17'
+    compile 'net.sourceforge.jexcelapi:jxl:2.6.12'
+}
