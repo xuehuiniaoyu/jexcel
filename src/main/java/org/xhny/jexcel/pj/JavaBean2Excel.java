@@ -60,7 +60,7 @@ public class JavaBean2Excel {
      * @param cursor
      * @return
      */
-    public JavaBean2Excel getCursor(int cursor) {
+    public JavaBean2Excel setCursor(int cursor) {
         this.cursor = cursor;
         return this;
     }
