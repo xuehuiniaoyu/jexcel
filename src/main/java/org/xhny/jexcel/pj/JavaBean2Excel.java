@@ -57,11 +57,11 @@ public class JavaBean2Excel {
     /**
      * 从哪一行开始写入数据
      * 0 追加 >0 按指定行写入
-     * @param row
+     * @param cursor
      * @return
      */
-    public JavaBean2Excel setBeginOf(int row) {
-        cursor = row;
+    public JavaBean2Excel getCursor(int cursor) {
+        this.cursor = cursor;
         return this;
     }
 
