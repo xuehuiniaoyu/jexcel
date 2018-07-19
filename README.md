@@ -17,7 +17,7 @@ allprojects {
 
 dependencies {
 	...
-	implementation 'com.github.xuehuiniaoyu:jexcel:v1.1'
+	implementation 'com.github.xuehuiniaoyu:jexcel:v1.2'
 }
 
 ```
