@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * java bean 集合存储到Excel文件中
  */
-public class JavaBean2Excel {
+public class JavaBean2Excel extends Table {
 
     private static final String EXCEL_XLS = "xls";
     private static final String EXCEL_XLSX = "xlsx";
@@ -51,6 +51,14 @@ public class JavaBean2Excel {
      */
     public JavaBean2Excel(int page, String ... names) {
         this.page = page;
+        this.names = names;
+    }
+
+    /**
+     * 设置过滤的名称
+     * @param names
+     */
+    public void setNames(String ... names) {
         this.names = names;
     }
 
@@ -96,14 +104,16 @@ public class JavaBean2Excel {
                     for (int i = 0; i < fields.length; i++) {
                         Cell cell = firstRow.createCell(i);
                         Field field = fields[i];
-                        cell.setCellValue(field.getName());
+                        String name = tryToGetMappingValue(field.getName());
+                        cell.setCellValue(name);
                         mapping.put(field.getName(), i);
                     }
                 } else {
                     for (int i = 0; i < names.length; i++) {
                         Cell cell = firstRow.createCell(i);
                         Field field = javaBeanHeadInfo.getClass().getDeclaredField(names[i]);
-                        cell.setCellValue(field.getName());
+                        String name = tryToGetMappingValue(field.getName());
+                        cell.setCellValue(name);
                         mapping.put(field.getName(), i);
                     }
                 }
@@ -118,12 +128,12 @@ public class JavaBean2Excel {
                     if(names.length > 0) {
                         for (int j = 0; j < names.length; j++) {
                             if (cell.getStringCellValue().equals(names[j])) {
-                                mapping.put(cell.getStringCellValue(), i);
+                                mapping.put(tryToGetMappingKey(cell.getStringCellValue()), i);
                             }
                         }
                     }
                     else {
-                        mapping.put(cell.getStringCellValue(), i);
+                        mapping.put(tryToGetMappingKey(cell.getStringCellValue()), i);
                     }
                     i++;
                 }

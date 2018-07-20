@@ -12,7 +12,7 @@ import java.util.List;
  * Excel文件内容转换为Java对象列表
  * 第一行内容必须对应java bean的字段名，顺序可以随便放置
  */
-public class Excel2JavaBean {
+public class Excel2JavaBean extends Table {
     /**
      * 游标位置 0为向后追加 >0为从cursor位置覆盖
      **/
@@ -78,9 +78,9 @@ public class Excel2JavaBean {
     /**
      * 读取Excel内容并转换为对象集合
      *
+     * @param <T>
      * @param stream Excel文件的输入流
      * @param tClass 转换对象的类型
-     * @param <T>
      * @return
      */
     public <T> List<T> read(InputStream stream, Class<T> tClass) {
@@ -95,7 +95,7 @@ public class Excel2JavaBean {
                 T bean = reflect.clear().on(tClass).constructor().newInstance();
                 List values = (List) excelList.get(i);
                 for (int j = 0; j < values.size(); j++) {
-                    String name = names.get(j);
+                    String name = tryToGetMappingValue(names.get(j));
                     Object value = values.get(j);
                     reflect.clear().on(bean);
                     reflect.set(name, value);
