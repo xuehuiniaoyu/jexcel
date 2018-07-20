@@ -1,23 +1,22 @@
 # jexcel
-java-bean -> excel-table | excel-table -> java-bean
+## java-bean -> excel-table | excel-table -> java-bean
+jexcel是一个Java库,可用于将Java对象内容写入到Excel表格中。同时它也可以被用来将一个Excel表格内容换成一个等效的Java对象集合。
+
+Jexcel is a Java library that can be used to the Java object content written to Excel spreadsheet.At the same time it also can be used to replace an Excel spreadsheet content with an equivalent collection of Java objects.
 
 ## Gradle
 
 ```
-1.Add it in your root build.gradle at the end of repositories （/build.gradle）:
 
 allprojects {
 	repositories {
-		...
 		maven { url 'https://jitpack.io' }
 	}
 }
 
-2.Add the dependency（添加依赖到app下的build.gradle）
 
 dependencies {
-	...
-	implementation 'com.github.xuehuiniaoyu:jexcel:v1.1'
+	implementation 'com.github.xuehuiniaoyu:jexcel:v1.2'
 }
 
 ```
@@ -55,7 +54,8 @@ List<User> userList = new Excel2JavaBean().setPage(1).setCursor(0).setCount(30).
 ## Java -> Excel
 
 ```
-JavaBean2Excel j2e = new JavaBean2Excel("job", "name" , "age", "sex").setCursor(3);
+JavaBean2Excel j2e = new JavaBean2Excel();
+//JavaBean2Excel j2e = new JavaBean2Excel("job", "name" , "age", "sex").setCursor(3);
 User user = new User();
 user.setName("333");
 user.setAge(29);
